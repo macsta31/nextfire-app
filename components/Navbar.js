@@ -7,6 +7,10 @@ const Navbar = () => {
 
     const { user, username } = useContext(UserContext)
 
+    const signOut = () => {
+      auth.signOut();
+    }
+
 
     
   return (
@@ -22,6 +26,9 @@ const Navbar = () => {
         {username && (
           <>
             <li className="push-left">
+              <button onClick={signOut}>Sign Out</button>
+            </li>
+            <li>
               <Link href="/admin">
                 <button className="btn-blue">Write Posts</button>
               </Link>
