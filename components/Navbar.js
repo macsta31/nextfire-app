@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { useRouter } from "next/router"
 import { useContext } from "react"
 import { UserContext } from "../lib/context"
 import { auth } from "../lib/firebase"
@@ -6,9 +7,14 @@ import { auth } from "../lib/firebase"
 const Navbar = () => {
 
     const { user, username } = useContext(UserContext)
+    const router = useRouter();
 
-    const signOut = () => {
-      auth.signOut();
+    const signOut = async () => {
+        await router.push('/')
+        await auth.signOut();
+        router.reload
+      
+      
     }
 
 
